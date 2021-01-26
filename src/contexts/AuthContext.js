@@ -3,35 +3,41 @@ import { auth } from '../firebase'
 
 const AuthContext = React.createContext()
 
-//get access to the context
+// get access to the context
 export function useAuth(){
    return useContext(AuthContext)
 }
 
 export function AuthProvider({ children }) {
-   //state to manage the value
+   // state to manage the value
    const [currentUser, setCurrentUser] = useState()
    const [loading, setLoading] = useState(true)
    
-   //use firebase to create user
+   // use firebase to create user
    function signup(email, password){
       return auth.createUserWithEmailAndPassword(email, password)
    }
 
-   //set the user to the new user through firebase only on mount
+   // use firebase to sign in
+   function login(email, password){
+      return auth.signInWithEmailAndPassword(email, password)
+   }
+
+   // set the user to the new user through firebase only on mount
    useEffect(()=> {
       const unsubscribe = auth.onAuthStateChanged(user => {
          setCurrentUser(user)
          setLoading(false)
       })
-      //unsuscribe from the listener
+      // unsuscribe from the listener
       return unsubscribe
    }, [])
 
    
    const value={
       currentUser,
-      signup
+      signup,
+      login
    }
    return (
       <AuthContext.Provider value={value}>

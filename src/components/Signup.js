@@ -4,6 +4,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { FormControl , TextField , Button , Card , CardContent , Typography } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { useAuth } from '../contexts/AuthContext'
+import { Link , useHistory} from "react-router-dom"
 
  const theme = createMuiTheme({
    typography: {
@@ -20,6 +21,7 @@ export default function Signup() {
    const { signup } = useAuth()
    const [error, setError] = useState('')
    const [loading, setLoading] = useState(false)
+   const history = useHistory()
 
    async function handleSubmit(e){
       e.preventDefault()
@@ -32,7 +34,8 @@ export default function Signup() {
       try{
          setError('')
          setLoading(true)
-         await signup(emailRef.current.value, passwordRef.current.value) //async event
+         await signup(emailRef.current.value, passwordRef.current.value) // async event
+         history.push('/')
       }catch{
          setError('Failed to create an account')
       }
@@ -56,7 +59,7 @@ export default function Signup() {
                      </form>
                   </CardContent>
             </Card>
-            <Typography variant="body1">Already have an account? Log In</Typography>
+            <Typography variant="body1">Already have an account? <Link to="/login">Log In</Link></Typography>
          </ThemeProvider>
       </>
    )
