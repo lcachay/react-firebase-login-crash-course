@@ -51,15 +51,36 @@ export default function UpdateProfile() {
                      {error && <Alert severity="error">{error}</Alert>}
                      <form onSubmit={handleSubmit}>
                         <FormControl  style={{width:'85%', gap:'1.5em'}}>
-                           <TextField fullWidth label="Email" type="email" inputRef={emailRef} defaultValue={currentUser.email} required/>
-                           <TextField fullWidth label="Password" type="password" inputRef={passwordRef}  required placeholder=/>
-                           <TextField fullWidth label="Password Confirmation" type="password" inputRef={passwordConfirmRef} required/>
-                           <Button disabled={loading} variant="contained" color="primary" disableElevation type="submit" >Sign Up</Button>
+                           <TextField 
+                              fullWidth 
+                              label="Email" 
+                              type="email" 
+                              inputRef={emailRef} 
+                              defaultValue={currentUser.email} 
+                              required
+                           />
+                           <TextField 
+                              fullWidth 
+                              label="Password" 
+                              type="password" 
+                              inputRef={passwordRef}  
+                              required 
+                              helperText="Leave blank to keep the same"
+                           />
+                           <TextField 
+                              fullWidth 
+                              label="Password Confirmation" 
+                              type="password" 
+                              inputRef={passwordConfirmRef} 
+                              required 
+                              helperText="Leave blank to keep the same"
+                           />
+                           <Button disabled={loading} variant="contained" color="primary" disableElevation type="submit" >Update</Button>
                         </FormControl>
                      </form>
                   </CardContent>
             </Card>
-            <Typography variant="body1">Already have an account? <Link to="/login">Log In</Link></Typography>
+            <Typography variant="body1"><Link to="/">Cancel</Link></Typography>
          </ThemeProvider>
       </>
    )
