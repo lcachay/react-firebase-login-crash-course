@@ -23,6 +23,11 @@ export function AuthProvider({ children }) {
       return auth.signInWithEmailAndPassword(email, password)
    }
 
+   //use firebase to logout
+   function logout(){
+      return auth.signOut()
+   }
+
    // set the user to the new user through firebase only on mount
    useEffect(()=> {
       const unsubscribe = auth.onAuthStateChanged(user => {
@@ -37,7 +42,8 @@ export function AuthProvider({ children }) {
    const value={
       currentUser,
       signup,
-      login
+      login,
+      logout
    }
    return (
       <AuthContext.Provider value={value}>
