@@ -45,8 +45,8 @@ export default function Login() {
                         <FormControl  style={{width:'85%', gap:'1.5em'}}>
                            <Typography variant="h3">Log In</Typography>
                            {error && <Alert severity="error">{error}</Alert>}
-                           <TextField fullWidth label="Email" type="email" inputRef={emailRef}/>
-                           <TextField fullWidth label="Password" type="password" inputRef={passwordRef}/>
+                           <TextField fullWidth label="Email" type="email" inputRef={emailRef} required/>
+                           <TextField fullWidth label="Password" type="password" inputRef={passwordRef} required/>
                            <Button disabled={loading} variant="contained" color="primary" disableElevation type="submit" >Log In</Button>
                         </FormControl>
                         <Typography variant="body1" style={{marginTop:'.75em'}}>

@@ -51,8 +51,8 @@ export default function Signup() {
                         <FormControl  style={{width:'85%', gap:'1.5em'}}>
                            <Typography variant="h3">Sign Up</Typography>
                            {error && <Alert severity="error">{error}</Alert>}
-                           <TextField fullWidth label="Email" type="email" inputRef={emailRef}/>
-                           <TextField fullWidth label="Password" type="password" inputRef={passwordRef}/>
+                           <TextField fullWidth label="Email" type="email" inputRef={emailRef} required/>
+                           <TextField fullWidth label="Password" type="password" inputRef={passwordRef} required/>
                            <TextField fullWidth label="Password Confirmation" type="password" inputRef={passwordConfirmRef} required/>
                            <Button disabled={loading} variant="contained" color="primary" disableElevation type="submit" >Sign Up</Button>
                         </FormControl>
