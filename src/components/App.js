@@ -1,5 +1,7 @@
 import React from 'react'
 import Signup from "./Signup"
+import Dashboard from "./Dashboard"
+import Login from "./Login"
 import 'fontsource-roboto';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container } from '@material-ui/core';
@@ -12,11 +14,17 @@ function App() {
   <CssBaseline />
   return (
     <>
-      <AuthProvider>
         <Container maxWidth="sm" style={{ marginTop: '4em', textAlign:'center'}}>
-          <Signup />
+          <Router>
+            <AuthProvider>
+              <Switch>
+                <Route exact path="/" component={Dashboard}/>
+                <Route path="/signup" component={Signup}/>
+                <Route path="/login" component={Login}/>
+              </Switch>
+            </AuthProvider>
+          </Router>
         </Container>
-      </AuthProvider>
     </>
   )
 }
