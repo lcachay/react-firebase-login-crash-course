@@ -24,22 +24,22 @@ export default function UpdateProfile() {
    const history = useHistory()
 
    async function handleSubmit(e){
-      // e.preventDefault()
+      e.preventDefault()
 
-      // //Validations
-      // if(passwordRef.current.value !== passwordConfirmRef.current.value){
-      //    return setError('Passwords do not match')
-      // }
+      //Validations
+      if(passwordRef.current.value !== passwordConfirmRef.current.value){
+         return setError('Passwords do not match')
+      }
 
-      // try{
-      //    setError('')
-      //    setLoading(true)
-      //    await signup(emailRef.current.value, passwordRef.current.value) // async event
-      //    history.push('/')
-      // }catch{
-      //    setError('Failed to create an account')
-      // }
-      // setLoading(false)
+      try{
+         setError('')
+         setLoading(true)
+         // await signup(emailRef.current.value, passwordRef.current.value) // async event
+         history.push('/')
+      }catch{
+         setError('Failed to create an account')
+      }
+      setLoading(false)
    }
 
    return (
@@ -63,8 +63,7 @@ export default function UpdateProfile() {
                               fullWidth 
                               label="Password" 
                               type="password" 
-                              inputRef={passwordRef}  
-                              required 
+                              inputRef={passwordRef} 
                               helperText="Leave blank to keep the same"
                            />
                            <TextField 
@@ -72,7 +71,6 @@ export default function UpdateProfile() {
                               label="Password Confirmation" 
                               type="password" 
                               inputRef={passwordConfirmRef} 
-                              required 
                               helperText="Leave blank to keep the same"
                            />
                            <Button disabled={loading} variant="contained" color="primary" disableElevation type="submit" >Update</Button>
