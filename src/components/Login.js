@@ -49,6 +49,9 @@ export default function Login() {
                            <TextField fullWidth label="Password" type="password" inputRef={passwordRef}/>
                            <Button disabled={loading} variant="contained" color="primary" disableElevation type="submit" >Log In</Button>
                         </FormControl>
+                        <Typography variant="body1" style={{marginTop:'.75em'}}>
+                           <Link to="/forgot-password">Forgot Password?</Link>
+                        </Typography>
                      </form>
                   </CardContent>
             </Card>

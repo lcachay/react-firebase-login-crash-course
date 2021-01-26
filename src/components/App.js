@@ -2,6 +2,7 @@ import React from 'react'
 import Signup from "./Signup"
 import Dashboard from "./Dashboard"
 import Login from "./Login"
+import ForgotPassword from "./ForgotPassword"
 import 'fontsource-roboto';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container } from '@material-ui/core';
@@ -21,6 +22,7 @@ function App() {
                 <PrivateRoute exact path="/" component={Dashboard}/>
                 <Route path="/signup" component={Signup}/>
                 <Route path="/login" component={Login}/>
+                <Route path="/forgot-password" component={ForgotPassword}/>
               </Switch>
             </AuthProvider>
           </Router>
