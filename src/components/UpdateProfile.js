@@ -18,28 +18,39 @@ export default function UpdateProfile() {
    const emailRef = useRef()
    const passwordRef = useRef()
    const passwordConfirmRef = useRef()
-   const { currentUser } = useAuth()
+   const { currentUser , updateEmail, updatePassword } = useAuth()
    const [error, setError] = useState('')
    const [loading, setLoading] = useState(false)
    const history = useHistory()
 
-   async function handleSubmit(e){
+   function handleSubmit(e){
       e.preventDefault()
 
       //Validations
       if(passwordRef.current.value !== passwordConfirmRef.current.value){
          return setError('Passwords do not match')
       }
+      
+      const promises = []
+      setLoading(true)
+      setError('')
 
-      try{
-         setError('')
-         setLoading(true)
-         // await signup(emailRef.current.value, passwordRef.current.value) // async event
-         history.push('/')
-      }catch{
-         setError('Failed to create an account')
+      if(emailRef.current.value !== currentUser.email){
+         promises.push(updateEmail(emailRef.current.value))
       }
-      setLoading(false)
+      if (passwordRef.current.value){
+         promises.push(updatePassword(passwordRef.current.value))
+      }
+
+      Promise.all(promises).then( () => { // if all the promises are ok it calls the then function
+         history.push('/')
+      }).catch(()=>{
+         setError('Failed to update account')
+      }).finally(()=>{
+         setLoading(false)
+      })
+
+     
    }
 
    return (
