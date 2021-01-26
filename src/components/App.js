@@ -3,6 +3,7 @@ import Signup from "./Signup"
 import Dashboard from "./Dashboard"
 import Login from "./Login"
 import ForgotPassword from "./ForgotPassword"
+import UpdateProfile from "./UpdateProfile"
 import 'fontsource-roboto';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container } from '@material-ui/core';
@@ -20,6 +21,7 @@ function App() {
             <AuthProvider>
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard}/>
+                <PrivateRoute path="/update-profile" component={UpdateProfile}/>
                 <Route path="/signup" component={Signup}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/forgot-password" component={ForgotPassword}/>
