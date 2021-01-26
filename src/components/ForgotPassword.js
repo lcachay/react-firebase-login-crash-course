@@ -45,6 +45,7 @@ export default function ForgotPassword() {
                         <FormControl  style={{width:'85%', gap:'1.5em'}}>
                            <Typography variant="h3">Password Reset</Typography>
                            {error && <Alert severity="error">{error}</Alert>}
+                           {message && <Alert severity="success">{message}</Alert>}
                            <TextField fullWidth label="Email" type="email" inputRef={emailRef}/>
                            <Button disabled={loading} variant="contained" color="primary" disableElevation type="submit" >Reset Password</Button>
                         </FormControl>
